@@ -3,17 +3,14 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-// Middleware para habilitar CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
 
-// Middleware para servir archivos estáticos
 app.use(express.static('public'));
 
-// Conversión de Celsius a Fahrenheit
 app.get('/convert/celsius-to-fahrenheit/:value', (req, res) => {
     const celsius = parseFloat(req.params.value);
     if (isNaN(celsius)) {
@@ -27,7 +24,6 @@ app.get('/convert/celsius-to-fahrenheit/:value', (req, res) => {
     });
 });
 
-// Conversión de Fahrenheit a Celsius
 app.get('/convert/fahrenheit-to-celsius/:value', (req, res) => {
     const fahrenheit = parseFloat(req.params.value);
     if (isNaN(fahrenheit)) {
@@ -41,7 +37,6 @@ app.get('/convert/fahrenheit-to-celsius/:value', (req, res) => {
     });
 });
 
-// Conversión de Kilómetros a Millas
 app.get('/convert/km-to-miles/:value', (req, res) => {
     const km = parseFloat(req.params.value);
     if (isNaN(km)) {
@@ -55,55 +50,16 @@ app.get('/convert/km-to-miles/:value', (req, res) => {
     });
 });
 
-// Ruta principal - Mostrar solo un mensaje simple
 app.get('/', (req, res) => {
-    res.send(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>API de Conversión de Unidades</title>
-            <style>
-                body { 
-                    font-family: Arial, sans-serif; 
-                    background-color: #f5f5f5; 
-                    display: flex; 
-                    justify-content: center; 
-                    align-items: center; 
-                    height: 100vh; 
-                    margin: 0; 
-                }
-                .container { 
-                    text-align: center; 
-                    background: white; 
-                    padding: 2rem; 
-                    border-radius: 10px; 
-                    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-                }
-                h1 { color: #6c5ce7; }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <h1>API de Conversión de Unidades</h1>
-                <p>Esta API está funcionando correctamente.</p>
-                <p>Usa los endpoints correspondientes para realizar conversiones.</p>
-            </div>
-        </body>
-        </html>
-    `);
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(port, () => {
     console.log('═'.repeat(60));
-    console.log('🚀 API DE CONVERSIÓN DE UNIDADES INICIADA CORRECTAMENTE');
+    console.log('API DE CONVERSIÓN DE UNIDADES INICIADA CORRECTAMENTE');
     console.log('═'.repeat(60));
-    console.log(`📍 Acceso local:    http://localhost:${port}`);
+    console.log(`Acceso local:    http://localhost:${port}`);
     console.log('═'.repeat(60));
-    console.log('📋 Endpoints disponibles:');
-    console.log(`   • http://localhost:${port}/convert/celsius-to-fahrenheit/:value`);
-    console.log(`   • http://localhost:${port}/convert/fahrenheit-to-celsius/:value`);
-    console.log(`   • http://localhost:${port}/convert/km-to-miles/:value`);
-    console.log('═'.repeat(60));
-    console.log('⏹️  Para detener el servidor: Presiona Ctrl + C');
+    console.log('Para detener el servidor: Presiona Ctrl + C');
     console.log('═'.repeat(60));
 });

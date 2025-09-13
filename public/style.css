@@ -1,0 +1,60 @@
+body {
+    background-color: #f8f9fa;
+    color: #333;
+}
+.header {
+    background: linear-gradient(135deg, #6c5ce7, #8e44ad);
+    color: white;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    margin-bottom: 20px;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.conversion-card {
+    border-top: 4px solid #6c5ce7;
+}
+.api-card {
+    border-top: 4px solid #f3bfef;
+}
+.test-card {
+    border-top: 4px solid #f7aed2;
+}
+.code-block {
+    background-color: #2d3436;
+    color: #dfe6e9;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+}
+.endpoint {
+    color: #fca8dc;
+}
+.btn-convert {
+    background-color: #f5a3be;
+    color: white;
+}
+.btn-convert:hover {
+    background-color: #ff92e4;
+    color: white;
+}
+.result-box {
+    background-color: #e8f4fc;
+    border-left: 4px solid #ec84cd;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+.footer {
+    background-color: #2d3436;
+    color: #dfe6e9;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}

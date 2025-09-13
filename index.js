@@ -1,9 +1,13 @@
 const express = require("express");
 const app = express();
 const PORT = 3000;
+
+
 const convertRoutes = require("./routes/convertRoutes");
 
+
 app.use("/convert", convertRoutes);
+
 
 app.get("/convert", (req, res) => {
   res.json({
@@ -16,9 +20,11 @@ app.get("/convert", (req, res) => {
   });
 });
 
+
 app.get("/", (req, res) => {
   res.send("Servidor funcionando correctamente");
 });
+
 
 app.listen(PORT, () => {
   console.log("Servidor corriendo en http://localhost:" + PORT);
